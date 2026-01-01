@@ -138,17 +138,41 @@ class Symulacjakaskady(QWidget):
         self.btn.clicked.connect(self.przelacz_symulacje)
 
         self.plus1 = QPushButton("[+] Napelnij", self)
-        self.plus1.setGeometry(350,450,100,30)
+        self.plus1.setGeometry(50,250,100,30)
         self.plus1.setStyleSheet("background-color: #444; color: white;")
-        self.plus1.clicked.connect(self.z1.ustaw_ciecz(100))
-
+        self.plus1.clicked.connect(lambda: self.sterowanie_poziomem(self.z1, 1.0))
+        
+        self.minus1 = QPushButton("[-] Oproznij", self)
+        self.minus1.setGeometry(50,300,100,30)
+        self.minus1.setStyleSheet("background-color: #444; color: white;")
+        self.minus1.clicked.connect(lambda: self.sterowanie_poziomem(self.z1, 0.0))
+        
         self.plus2 = QPushButton("[+] Napelnij", self)
-        self.plus2.setGeometry(50,250,100,30)
+        self.plus2.setGeometry(350,450,100,30)
         self.plus2.setStyleSheet("background-color: #444; color: white;")
-        self.plus2.clicked.connect(self.z2.ustaw_ciecz(100))
+        self.plus2.clicked.connect(lambda: self.sterowanie_poziomem(self.z2, 1.0))
+        
+        self.minus2 = QPushButton("[-] Oproznij", self)
+        self.minus2.setGeometry(350,500,100,30)
+        self.minus2.setStyleSheet("background-color: #444; color: white;")
+        self.minus2.clicked.connect(lambda: self.sterowanie_poziomem(self.z2, 0.0))
 
+        self.plus3 = QPushButton("[+] Napelnij", self)
+        self.plus3.setGeometry(650,100,100,30)
+        self.plus3.setStyleSheet("background-color: #444; color: white;")
+        self.plus3.clicked.connect(lambda: self.sterowanie_poziomem(self.z3, 1.0))
+        
+        self.minus3 = QPushButton("[-] Oproznij", self)
+        self.minus3.setGeometry(650,150,100,30)
+        self.minus3.setStyleSheet("background-color: #444; color: white;")
+        self.minus3.clicked.connect(lambda: self.sterowanie_poziomem(self.z3, 0.0))
+        
         self.running = False
         self.flow_speed = 0.8
+
+    def sterowanie_poziomem(self, zbiornik, poziom_procent):
+        zbiornik.ustaw_ciecz(poziom_procent)
+        self.update()
 
     def przelacz_symulacje(self):
         if self.running: self.timer.stop()
