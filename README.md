@@ -1,1 +1,2 @@
-# projekt_python_inf2_2026
+To jest mój projekt z pythona.
+Szymon Dudziński, 203942
