@@ -1,0 +1,1 @@
+# projekt_python_inf2_2026
